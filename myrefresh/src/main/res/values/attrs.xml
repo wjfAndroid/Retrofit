@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="TagsLayout">
+        <attr name="tagHorizontalSpace" format="dimension"/>
+        <attr name="tagVerticalSpace" format="dimension"/>
+        <attr name="tagh" format="integer"/>
+    </declare-styleable>
+
+    <declare-styleable name="CircleView">
+        <attr name="src" format="reference"/>
+        <attr name="format" format="enum">
+            <enum name="circle" value="0"/>
+            <enum name="reactangle" value="1"/>
+        </attr>
+        <attr name="radious" format="dimension"/>
+    </declare-styleable>
+
+</resources>

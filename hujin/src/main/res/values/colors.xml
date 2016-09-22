@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#dddddd</color>
+
+
+
+    <color name="white">#fff</color>
+
+    <!--文字颜色-->
+    <color name="txt_e7443c">#e7443c</color>
+    <!--文字颜色-->
+    <color name="txt_43acfc">#43acfc</color>
+    <!--文字颜色-->
+    <color name="txt_333333">#333333</color>
+    <!--文字颜色-->
+    <color name="txt_666666">#666666</color>
+    <!--文字颜色-->
+    <color name="txt_999999">#999999</color>
+
+    <!--背景色-->
+    <color name="bg_f9f9f9">#f9f9f9</color>
+
+    <color name="rb_e7443c">#e7443c</color>
+</resources>
