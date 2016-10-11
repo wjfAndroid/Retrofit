@@ -10,6 +10,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.animation.AccelerateInterpolator;
 
 import com.wjf.recyclerviewrefresh.bean.Point;
 
@@ -71,10 +72,12 @@ public class SimpleAnimatorView extends View {
                 invalidate();
             }
         });
+        anim.setInterpolator(new AccelerateInterpolator());
         //使用自定义的Evaluator来实现颜色的变化
         //  ObjectAnimator anim2 = ObjectAnimator.ofObject(this, "color", new ColorEvaluator(), "#FF0000", "#0000FF");
         //使用官方已经写好的颜色变化的Evaluator来实现
         ObjectAnimator anim2 = ObjectAnimator.ofObject(this, "color", new ArgbEvaluator(), 0xffff0000, 0xff0000ff);
+
         AnimatorSet animatorSet = new AnimatorSet();
         animatorSet.play(anim).with(anim2);
         animatorSet.setDuration(5000);
