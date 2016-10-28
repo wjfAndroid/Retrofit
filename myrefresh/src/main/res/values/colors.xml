@@ -10,6 +10,8 @@
     <color name="three">#48afb6</color>
     <color name="four">#22737b</color>
 
-
     <color name="color999999">#999999</color>
+
+    <color name="cfc4">#ffFFCC44</color>
+    <color name="c6af">#FF66AAFF</color>
 </resources>

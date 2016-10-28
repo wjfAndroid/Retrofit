@@ -3,6 +3,8 @@ package com.wjf.test;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.util.Pair;
+import android.view.View;
+import android.widget.Button;
 
 import com.wjf.test.bean.Contributor;
 import com.wjf.test.bean.Student;
@@ -13,6 +15,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 import okhttp3.OkHttpClient;
 import okhttp3.ResponseBody;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -24,9 +28,7 @@ import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import rx.Observable;
 import rx.Observer;
-import rx.Scheduler;
 import rx.Subscriber;
-import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 import rx.functions.Func1;
@@ -34,22 +36,75 @@ import rx.functions.Func2;
 import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements View.OnClickListener {
 
     String baseurl = "https://api.github.com/";
     Retrofit retrofit;
     GitHubAPI api;
     CompositeSubscription compositeSubscription = new CompositeSubscription();
 
+    @InjectView(R.id.simple_retrofit)
+    Button simpleRetrofit;
+    @InjectView(R.id.gson_retrofit)
+    Button gsonRetrofit;
+    @InjectView(R.id.log_retrofit)
+    Button logRetrofit;
+    @InjectView(R.id.url_retrofit)
+    Button urlRetrofit;
+    @InjectView(R.id.rxjava_retrofit)
+    Button rxjavaRetrofit;
+    @InjectView(R.id.rxjava_user)
+    Button rxjavaUser;
+    @InjectView(R.id.button2)
+    Button button2;
+    @InjectView(R.id.rx_flat)
+    Button rxFlat;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.inject(this);
 
-        rxFlat();
+        simpleRetrofit.setOnClickListener(this);
+        gsonRetrofit.setOnClickListener(this);
+        logRetrofit.setOnClickListener(this);
+        urlRetrofit.setOnClickListener(this);
+        rxjavaRetrofit.setOnClickListener(this);
+        rxjavaUser.setOnClickListener(this);
+        rxFlat.setOnClickListener(this);
+
     }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.simple_retrofit:
+                simpleRetrofit();
+                break;
+            case R.id.gson_retrofit:
+                gsonRetrofit();
+                break;
+            case R.id.log_retrofit:
+                logRetrofit();
+                break;
+            case R.id.url_retrofit:
+                urlRetrofit();
+                break;
+            case R.id.rxjava_retrofit:
+                rxjavaRetrofit();
+                break;
+            case R.id.rxjava_user:
+                rxjavaUser();
+                break;
+            case R.id.rx_flat:
+                rxFlat();
+                break;
+        }
 
+    }
+
+    //普通get方式
     public void simpleRetrofit() {
         retrofit = new Retrofit
                 .Builder()
@@ -71,12 +126,11 @@ public class MainActivity extends Activity {
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
-
             }
         });
-
     }
 
+    //使用gson解析
     public void gsonRetrofit() {
         retrofit = new Retrofit
                 .Builder()
@@ -100,6 +154,7 @@ public class MainActivity extends Activity {
         });
     }
 
+    //打log但是没有成功
     public void logRetrofit() {
         HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
         httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
@@ -129,6 +184,7 @@ public class MainActivity extends Activity {
         });
     }
 
+    //直接使用url拼接
     public void urlRetrofit() {
 
         retrofit = new Retrofit
@@ -153,6 +209,7 @@ public class MainActivity extends Activity {
         });
     }
 
+    //简单使用rxjava
     public void rxjavaRetrofit() {
         compositeSubscription = RxUtils.getNewCompositeSubIfUnsubscribed(compositeSubscription);
 
@@ -164,7 +221,6 @@ public class MainActivity extends Activity {
                 .build();
 
         api = retrofit.create(GitHubAPI.class);
-
 
 
         compositeSubscription.add(api.rxjavaGetDate("square", "retrofit")
@@ -186,9 +242,9 @@ public class MainActivity extends Activity {
                         System.out.println("contributors = " + contributors);
                     }
                 }));
-
     }
 
+    //对数据进行操作的rxjava
     public void rxjavaUser() {
         compositeSubscription = RxUtils.getNewCompositeSubIfUnsubscribed(compositeSubscription);
         retrofit = new Retrofit
@@ -199,8 +255,8 @@ public class MainActivity extends Activity {
                 .build();
 
         api = retrofit.create(GitHubAPI.class);
-      //  compositeSubscription.add(
-                api.rxjavaGetDate("square", "retrofit")
+          compositeSubscription.add(
+        api.rxjavaGetDate("square", "retrofit")
                 .flatMap(new Func1<List<Contributor>, Observable<Contributor>>() {
                     @Override
                     public Observable<Contributor> call(List<Contributor> contributors) {
@@ -245,13 +301,13 @@ public class MainActivity extends Activity {
                         System.out.println("contributor = " + contributor);
                         System.out.println(" =====================");
                     }
-                });
+                })
 
-      //  );
+         );
     }
 
 
-    public void rxFlat(){
+    public void rxFlat() {
         initStudent();
         Observable.from(mStudents).flatMap(new Func1<Student, Observable<String>>() {
             @Override
@@ -270,11 +326,11 @@ public class MainActivity extends Activity {
                 System.out.println("course = " + course);
             }
         });
-
-
     }
-   ArrayList<Student> mStudents = new ArrayList<>();
-    public void initStudent(){
+
+    ArrayList<Student> mStudents = new ArrayList<>();
+
+    public void initStudent() {
         Student student1 = new Student();
         student1.setName("aa");
         Student student2 = new Student();
@@ -293,8 +349,6 @@ public class MainActivity extends Activity {
         student2.setCourses(courses);
         mStudents.add(student1);
         mStudents.add(student2);
-
-
     }
 
 
@@ -303,4 +357,6 @@ public class MainActivity extends Activity {
         RxUtils.unSubscribeIfNotNull(compositeSubscription);
         super.onDestroy();
     }
+
+
 }

@@ -15,7 +15,6 @@ public class RxUtils {
         if (subscription == null || subscription.isUnsubscribed()) {
             return new CompositeSubscription();
         }
-
         return subscription;
     }
 }

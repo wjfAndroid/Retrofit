@@ -11,5 +11,7 @@ public class BitmapShaderActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bitmap_shader);
+
+
     }
 }

@@ -11,6 +11,24 @@ android {
         versionCode 1
         versionName "1.0"
     }
+    productFlavors {
+        dev {
+            manifestPlaceholders = [channel: "dev"]
+        }
+        official {
+            manifestPlaceholders = [channel: "official"]
+        }
+        xiaomi {
+            manifestPlaceholders = [channel: "xiaomi"]
+        }
+        wandoujia {
+            manifestPlaceholders = [channel: "wandoujia"]
+        }
+        "360" {
+            manifestPlaceholders = [channel: "360"]
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -18,6 +36,8 @@ android {
         }
     }
 }
+
+
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])

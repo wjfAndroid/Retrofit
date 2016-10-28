@@ -2,12 +2,13 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Retrofit.iml" filepath="$PROJECT_DIR$/Retrofit.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ViewDemo.iml" filepath="$PROJECT_DIR$/ViewDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/hujin/hujin.iml" filepath="$PROJECT_DIR$/hujin/hujin.iml" />
       <module fileurl="file://$PROJECT_DIR$/model/model.iml" filepath="$PROJECT_DIR$/model/model.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mykotlin/mykotlin.iml" filepath="$PROJECT_DIR$/mykotlin/mykotlin.iml" />
       <module fileurl="file://$PROJECT_DIR$/mylibrary/mylibrary.iml" filepath="$PROJECT_DIR$/mylibrary/mylibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/myrefresh/myrefresh.iml" filepath="$PROJECT_DIR$/myrefresh/myrefresh.iml" />
+      <module fileurl="file://$PROJECT_DIR$/myzlsj/myzlsj.iml" filepath="$PROJECT_DIR$/myzlsj/myzlsj.iml" />
     </modules>
   </component>
 </project>

@@ -1,15 +1,15 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 24
-    buildToolsVersion "24.0.1"
+    compileSdkVersion 23
+    buildToolsVersion "23.0.1"
 
     defaultConfig {
         applicationId "com.wjf.recyclerviewrefresh"
         minSdkVersion 21
-        targetSdkVersion 24
-        versionCode 1
-        versionName "1.0"
+        targetSdkVersion 23
+        versionCode 3
+        versionName "3.1"
     }
     buildTypes {
         release {
@@ -17,23 +17,29 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    dataBinding{
+        enabled true
+    }
+
 }
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
     compile files('libs/javabase64-1.3.1.jar')
-
-    compile 'com.android.support:appcompat-v7:24.2.0'
-    compile 'com.android.support:recyclerview-v7:24.2.0'
-    compile 'com.android.support:design:24.2.0'
+    compile 'com.android.support:appcompat-v7:23.2.0'
+    compile 'com.android.support:recyclerview-v7:23.2.0'
+    compile 'com.android.support:design:23.2.0'
     compile 'com.nineoldandroids:library:2.4.0'
     compile 'com.github.lzyzsd:circleprogress:1.1.0@aar'
     compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha8'
     compile 'com.google.code.gson:gson:2.7'
     compile 'com.daimajia.numberprogressbar:library:1.2@aar'
     compile 'com.jakewharton:butterknife:6.1.0'
-    compile 'com.android.support:support-v4:24.2.0'
-
+    compile 'com.android.support:support-v4:23.2.0'
     compile 'me.leolin:ShortcutBadger:1.1.10@aar'
+    compile 'cn.fanrunqi:waveprogress:1.0.1'
+    compile 'eu.the4thfloor.volley:com.android.volley:2015.05.28'
+
+    compile 'com.squareup.okhttp3:okhttp:3.0.1'
 }

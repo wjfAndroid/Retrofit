@@ -20,7 +20,7 @@ public class PswActivity extends AppCompatActivity {
         payPwdEditText = (PayPwdEditText) findViewById(R.id.ppe_pwd);
         payPwdEditText2 = (PayPwdEditText) findViewById(R.id.ppe_pwd2);
 
-        payPwdEditText.initStyle(R.drawable.edit_num_bg, 6, 0.33f, R.color.color999999, R.color.color999999, 20);
+        payPwdEditText.initStyle(R.drawable.edit_num_bg, 6, 0.33f, R.color.color999999, R.color.color999999, 30);
         payPwdEditText.setOnTextFinishListener(new PayPwdEditText.OnTextFinishListener() {
             @Override
             public void onFinish(String str) {

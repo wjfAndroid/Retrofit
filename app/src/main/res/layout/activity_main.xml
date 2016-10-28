@@ -13,5 +13,70 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"/>
+        android:text="Hello World!"
+        android:id="@+id/textView"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="simpleRetrofit"
+        android:id="@+id/simple_retrofit"
+        android:layout_alignTop="@+id/textView"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="gsonRetrofit"
+        android:id="@+id/gson_retrofit"
+        android:layout_below="@+id/simple_retrofit"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="logRetrofit"
+        android:id="@+id/log_retrofit"
+        android:layout_below="@+id/gson_retrofit"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="urlRetrofit"
+        android:id="@+id/url_retrofit"
+        android:layout_below="@+id/log_retrofit"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="rxjavaRetrofit"
+        android:id="@+id/rxjava_retrofit"
+        android:layout_below="@+id/url_retrofit"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="rxjavaUser"
+        android:id="@+id/rxjava_user"
+        android:layout_below="@+id/rxjava_retrofit"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Button"
+        android:id="@+id/button2"
+        android:layout_below="@+id/rxjava_user"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="rxFlat"
+        android:id="@+id/rx_flat"
+        android:layout_below="@+id/button2"
+        android:layout_centerHorizontal="true"/>
 </RelativeLayout>
